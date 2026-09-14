@@ -31,7 +31,7 @@
  const adultInfo=document.querySelector('.adult-info');
  const reception=document.querySelector('.reception');
  const afterParty=document.querySelector('.after-party');
- adultInfo.after(reception,afterParty);
+ if(reception&&afterParty)adultInfo.after(reception,afterParty);
  const calendar=document.getElementById('calendarDialog');
  const gallery=document.getElementById('galleryDialog');
  let returnFocus=null;
@@ -106,6 +106,7 @@
   setTimeout(()=>{button.disabled=false;button.textContent=original},1800);
  });
  const afterPartyForm=document.getElementById('afterPartyForm');
+ if(afterPartyForm){
  const partyContact=document.getElementById('partyContact');
  partyContact.addEventListener('input',()=>{const digits=partyContact.value.replace(/\D/g,'').slice(0,11);partyContact.value=digits.length<4?digits:digits.length<8?`${digits.slice(0,3)}-${digits.slice(3)}`:`${digits.slice(0,3)}-${digits.slice(3,7)}-${digits.slice(7)}`});
  afterPartyForm.addEventListener('submit',async event=>{
@@ -118,4 +119,5 @@
   catch{status.hidden=false;status.textContent='전달하지 못했습니다. 다시 시도해 주세요.';button.textContent='다시 시도해 주세요.'}
   setTimeout(()=>{button.disabled=false;button.textContent=original},1800);
  });
+ }
 })();
