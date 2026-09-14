@@ -1,0 +1,156 @@
+/* Slow camera movement and restrained perimeter decoration. */
+.opening{transition:opacity 1.8s ease,visibility 1.8s}.envelope-stage{transform-origin:50% 68%;transition:transform 3.1s cubic-bezier(.22,.61,.3,1),opacity 1.8s}.opening.zooming .envelope-stage{transform:translateY(-18px) scale(1.19)}.opening-heading,.opening-bottom{transition:opacity 2s,transform 3s}.opening.zooming .opening-heading{opacity:.36;transform:translateY(-10px)}.opening.zooming .opening-bottom{opacity:.5}.envelope-art{transition:transform 3s cubic-bezier(.25,.5,.25,1)}.envelope-flap{transition:transform 3.2s cubic-bezier(.37,0,.2,1),filter 3.2s}.real-seal{transition:opacity .7s,transform 1s}.letter-peek{transition:transform 2.7s .8s,opacity 1.4s .6s}.intro-flowers{transition:transform 3s,opacity 1.8s}.opening.dissolving .envelope-stage{transform:translateY(-44px) scale(1.28);opacity:0}.opening.dissolving .opening-heading,.opening.dissolving .opening-bottom{opacity:0}
+.hero{overflow:visible}.hero-frame{overflow:hidden}.arrived .hero-photo{animation:portrait-drift 18s ease-in-out infinite;will-change:transform}.hero-edge-flower{position:absolute;z-index:3;pointer-events:none;width:88px;filter:drop-shadow(1px 2px 2px #96715d12);opacity:.92}.edge-left{left:-26px;bottom:-13px;transform:none}.edge-right{right:-23px;top:-17px;width:76px;transform:none}.arrived .edge-left,.arrived .edge-right{animation:none}.announcement{padding-top:44px}#cursorPetals{position:fixed;inset:0;width:100%;height:100%;z-index:30;pointer-events:none;user-select:none;contain:strict}
+@keyframes portrait-drift{0%,100%{transform:scale(1.025) translate(-.25%,.1%)}50%{transform:scale(1.055) translate(.35%,-.35%)}}
+@media(max-width:360px){.hero-edge-flower{width:73px}.edge-right{width:64px}.opening.zooming .envelope-stage{transform:translateY(-12px) scale(1.13)}}
+@media(hover:none),(pointer:coarse){#cursorPetals{display:none}}
+@media(prefers-reduced-motion:reduce){#cursorPetals{display:none}.arrived .hero-photo{animation:none;transform:none;will-change:auto}.hero-edge-flower{animation:none}}
+
+/* Fixed orientation, separate inner card and envelope pocket. */
+.envelope-art,.opening.unfolding .envelope-art{transform:none;transition:none}
+.envelope-shadow{transform:none}
+.flower-left,.flower-right,.opening.unfolding .flower-left,.opening.unfolding .flower-right{transform:none;animation:none;transition:opacity 1.8s}
+.hero-edge-flower,.arrived .hero-edge-flower{transform:none;animation:none}
+.envelope-back{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;clip-path:inset(47.17% 0 0 0);z-index:0}
+.envelope-pocket{clip-path:polygon(14.6% 47.17%,30% 69.2%,70% 69.2%,85.4% 47.17%,85.4% 97%,14.6% 97%)}
+.letter-peek{left:24%;right:24%;top:49%;height:42%;background:#fffefb;border:1px solid #e9ded4;opacity:1;transform:none;padding-top:24px;box-shadow:0 3px 10px #765c4221;transition:transform 2.5s cubic-bezier(.22,.65,.3,1),opacity 1.3s}
+.letter-peek span{font-size:12px}.letter-peek i{font-size:34px}
+.opening.unfolding .letter-peek{transform:none;opacity:1}
+.opening.card-rising .letter-peek{transform:translateY(-82%);opacity:1}
+.opening.card-fading .letter-peek{transform:translateY(-97%);opacity:0}
+
+/* Flowers live on the backdrop, not over the portrait or envelope. */
+body{position:relative;isolation:isolate;background:#fffaf6}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:#fffaf6 url('assets/porcelain-garden.png') center center/cover no-repeat}
+.invitation{background:#fffefa}
+.announcement,.details{background:transparent}.masthead{background:#fffefa}.music-card{background:#fffefaeb}.hero{background:#e7e0da}.opening{background:#fffefa}.opening::before{content:none}
+
+/* During the opening, only the outer floral backdrop is visible. */
+body.intro-running .invitation{visibility:hidden;opacity:0;pointer-events:none}
+body.intro-running.arrived .invitation{visibility:visible;opacity:1;transition:opacity 1.8s ease}
+.opening{background:transparent;border:0;box-shadow:none}
+.opening::before{content:none}
+.opening-bottom{background:transparent;box-shadow:none}
+
+/* Personalized card; the date has the strongest hierarchy. */
+.letter-peek{left:23%;right:23%;height:66%;top:47%;padding:17px 8px 12px;display:flex;flex-direction:column;justify-content:center;gap:9px}
+.letter-peek p{margin:0;font-family:var(--sans);font-style:normal;line-height:1.5}
+.letter-peek .letter-names{font-size:15px;color:#62483f;letter-spacing:.4px}
+.letter-peek .letter-names span{font-size:13px;color:#a77b66}
+.letter-peek .letter-date{display:block;font:500 clamp(24px,6.6vw,32px)/1.1 var(--serif);color:#875c48;letter-spacing:-.7px;white-space:nowrap}
+.letter-peek .letter-invite{font-size:11px;color:#816457}
+.letter-peek .letter-time{font-size:14px;color:#684b40}
+.letter-peek .letter-venue{font-size:13px;color:#684b40}
+.opening-corner{position:absolute;width:130px;z-index:7;pointer-events:none;transform:none;filter:drop-shadow(1px 3px 3px #9874581f);transition:opacity 1.4s}
+.opening-corner-left{left:-17px;bottom:12%}.opening-corner-right{right:-19px;top:19%;width:112px}
+.opening.card-rising .opening-heading{opacity:0}
+.opening.dissolving .opening-corner{opacity:0}
+@media(max-width:360px){.letter-peek{gap:7px;padding:12px 6px}.letter-peek .letter-names{font-size:13px}.letter-peek .letter-date{font-size:24px}.letter-peek .letter-invite{font-size:10px}.letter-peek .letter-time,.letter-peek .letter-venue{font-size:12px}.opening-corner{width:103px}.opening-corner-right{width:92px}}
+
+.announcement h2{font-size:28px;letter-spacing:1px}.announcement h2 span{padding:0 7px}
+/* Portrait choreography: a 70% opening scales to full height. */
+.envelope-stage{width:min(86vw,50svh,440px);height:100svh;aspect-ratio:auto;max-width:none;flex:none;transform:scale(.7);transform-origin:50% 50%;perspective:1600px;transition:transform 3.2s cubic-bezier(.22,.61,.3,1),opacity 1.8s;filter:none}
+.opening.zooming .envelope-stage{transform:scale(1)}
+.envelope-art,.opening.unfolding .envelope-art{left:0;top:-33.333%;width:100%;height:133.333%;aspect-ratio:auto;transform:none}
+.envelope-back,.envelope-pocket,.envelope-flap img{object-fit:fill}
+.envelope-back{clip-path:inset(25% 0 0 0);transition:transform 3s cubic-bezier(.25,.55,.25,1)}
+.envelope-pocket{clip-path:polygon(0% 25%,25% 49%,75% 49%,100% 25%,100% 100%,0% 100%);transition:transform 3s cubic-bezier(.25,.55,.25,1)}
+.envelope-flap{clip-path:inset(0 0 75% 0);transform-origin:50% 25%;transform:rotateX(-180deg)}
+.real-seal{width:24%;height:12%;left:38%;top:42%}
+.envelope-shadow{display:none}
+.letter-peek{left:9%;right:9%;top:29%;height:65%;padding:26px 14px;gap:20px;box-shadow:0 3px 12px #765c4221}
+.letter-peek .letter-names{font-size:20px}.letter-peek .letter-date{font-size:clamp(27px,7vw,36px);letter-spacing:-1px}.letter-peek .letter-invite{font-size:13px}.letter-peek .letter-time{font-size:17px}.letter-peek .letter-venue{font-size:16px;line-height:1.8}
+.opening.card-rising .envelope-back,.opening.card-rising .envelope-pocket{transform:translateY(48%)}
+.opening.card-rising .envelope-flap{transform:translateY(48%) rotateX(0deg)}
+.opening.card-rising .letter-peek{transform:translateY(-9%);opacity:1}
+.opening.card-fading .letter-peek{transform:translateY(-13%);opacity:0}
+.opening.dissolving .envelope-stage{transform:scale(1);opacity:0}
+.opening-heading{top:3svh}.opening-heading h1{font-size:20px;margin:8px 0}.opening.zooming .opening-heading{opacity:0}.opening-bottom{bottom:5svh}.opening.zooming .opening-bottom{opacity:0}
+@media(max-width:360px){.envelope-stage{width:86vw}.opening.zooming .envelope-stage{transform:scale(1)}.letter-peek{padding:18px 10px;gap:16px}.letter-peek .letter-names{font-size:17px}.letter-peek .letter-date{font-size:27px}.letter-peek .letter-invite{font-size:12px}.letter-peek .letter-time,.letter-peek .letter-venue{font-size:14px}}
+/* Align crop and hinge with the generated portrait envelope. */
+.envelope-art,.opening.unfolding .envelope-art{top:-39.75%;height:142.83%}
+.envelope-back{clip-path:inset(27.83% 0 0 0)}
+.envelope-pocket{clip-path:polygon(7.8% 27.83%,49.5% 56%,91.8% 27.83%,91.8% 97.85%,7.8% 97.85%)}
+.envelope-flap{clip-path:inset(0 0 72.17% 0);transform-origin:50% 27.83%}
+.letter-peek{left:11%;right:11%;top:32%;height:60%}
+.opening.card-rising .letter-peek{transform:translateY(-5%)}
+.opening.card-fading .letter-peek{transform:translateY(-9%);opacity:0}
+
+/* Keep shell translation independent from the hinged flap rotation. */
+.flap-slide{position:absolute;inset:0;z-index:5;transform:translateY(0);pointer-events:none}
+.opening.unfolding .flap-slide{z-index:1}
+.envelope-back,.envelope-pocket,.flap-slide{transition:transform 3s cubic-bezier(.25,.55,.25,1);will-change:transform}
+.opening.card-rising .envelope-back,.opening.card-rising .envelope-pocket,.opening.card-rising .flap-slide{transform:translateY(48%)}
+.opening.card-rising .envelope-flap{transform:rotateX(0deg)}
+.envelope-back{clip-path:inset(27.73% 0 0 0)}
+.envelope-flap{clip-path:inset(0 0 72.07% 0);backface-visibility:visible}
+.envelope-art{isolation:isolate}
+.letter-peek{box-sizing:border-box;overflow:hidden;backface-visibility:hidden}
+@media(max-width:600px){
+ .envelope-stage{height:80svh}
+ .letter-peek{gap:clamp(9px,1.8svh,16px);padding:18px 12px}
+}
+@media(prefers-reduced-motion:reduce){.envelope-back,.envelope-pocket,.flap-slide{will-change:auto}}
+/* Softer stationery; the insert is 95% of its former 78% width. */
+.envelope-back,.envelope-pocket,.envelope-flap img{-webkit-mask-image:url('assets/envelope-round-mask.svg');mask-image:url('assets/envelope-round-mask.svg');-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.letter-peek{left:12.95%;right:12.95%;border-radius:18px}
+.letter-peek .letter-date{font-size:clamp(24px,6.5vw,32px)}
+/* Tap bursts are available on touch screens as well. */
+@media(hover:none),(pointer:coarse){#cursorPetals{display:block}}
+@media(prefers-reduced-motion:reduce){#cursorPetals{display:none}}
+
+/* Shorten only the inner card: 60% × 0.8 = 48%. */
+.letter-peek{height:48%;gap:clamp(8px,1.5svh,16px);padding:16px 12px}
+@media(max-height:650px){.letter-peek{gap:7px;padding:10px 8px}.letter-peek .letter-names{font-size:16px}.letter-peek .letter-time,.letter-peek .letter-venue{font-size:13px}}
+/* One intact envelope image. No sliced masks, flap crops or shared seams. */
+.envelope-scene{position:relative;flex:none;width:min(86vw,44svh,390px);height:min(80svh,710px);transform:scale(.7);transform-origin:50% 50%;transition:transform 3.2s cubic-bezier(.22,.61,.3,1),opacity 1.8s;isolation:isolate}
+.opening.zooming .envelope-scene{transform:scale(1)}
+.sealed-envelope{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:3;opacity:1;transform:translateY(0);pointer-events:none;filter:drop-shadow(0 7px 9px #80614e21);transition:opacity 2.8s ease,transform 3.2s cubic-bezier(.25,.55,.25,1)}
+.insert-card{position:absolute;left:12.95%;right:12.95%;height:68.5%;top:16%;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(9px,1.8svh,17px);padding:18px 10px;background:#fffefb;border:1px solid #ebdfd5;border-radius:18px;box-shadow:0 3px 10px #765c4221;text-align:center;opacity:0;visibility:hidden;transform:translateY(7%);transition:transform 3s cubic-bezier(.22,.61,.3,1),opacity 1.4s ease,visibility 1.4s;}
+.insert-card p{margin:0;line-height:1.5;color:#684b40;font-family:var(--sans)}
+.insert-card .letter-names{font-size:clamp(15px,4vw,19px);white-space:nowrap}
+.insert-card .letter-names span{color:#ad826c;font-size:14px}
+.insert-card .letter-date{font:500 clamp(23px,6.2vw,31px)/1.15 var(--serif);color:#875c48;letter-spacing:-1px;white-space:nowrap}
+.insert-card .letter-invite{font-size:12px}.insert-card .letter-time{font-size:15px}.insert-card .letter-venue{font-size:14px;line-height:1.8}
+.opening.unfolding .sealed-envelope{opacity:0;transform:translateY(26%)}
+.opening.unfolding .insert-card{opacity:1;visibility:visible;transform:translateY(-4%);transition-delay:.45s}
+.opening.card-rising .insert-card{transform:translateY(-9%);transition-delay:0s}
+.opening.card-fading .insert-card{opacity:0;transform:translateY(-13%);transition-delay:0s}
+.opening.dissolving .envelope-scene{opacity:0;transform:scale(1)}
+@media(max-height:650px){.insert-card{gap:7px;padding:12px 8px}.insert-card .letter-names{font-size:14px}.insert-card .letter-date{font-size:23px}.insert-card .letter-invite{font-size:10px}.insert-card .letter-time,.insert-card .letter-venue{font-size:12px}}
+
+/* Single-image viewport excludes the source backdrop. The seal sits at 50% height. */
+.sealed-envelope{overflow:hidden;border-radius:18px;background:#ebbaa8;box-shadow:0 6px 14px #80614e21;filter:none}
+.sealed-envelope>img{position:absolute;max-width:none;width:118.472%;height:117.84%;left:-9.3%;top:-3.833%;display:block;pointer-events:none}
+/* An intact open-envelope image provides the intermediate reveal. */
+.envelope-scene{z-index:2}.sealed-envelope{z-index:5}
+.opened-envelope{position:absolute;inset:0;z-index:3;opacity:0;transform:translateY(0);pointer-events:none;transition:opacity 1.8s ease,transform 3s cubic-bezier(.22,.61,.3,1)}
+.opened-envelope>img{position:absolute;width:119%;height:142.83%;max-width:none;left:-9.5%;top:-39.75%;display:block}
+.opening.unfolding .sealed-envelope{opacity:0;transform:translateY(2%);transition-duration:1.8s,2.4s}
+.opening.unfolding .opened-envelope{opacity:1;transform:translateY(0)}
+.insert-card{z-index:4;left:7%;right:7%;top:10.5%;height:79%;gap:clamp(12px,2svh,20px)}
+.opening.unfolding .insert-card{opacity:0;visibility:hidden;transform:translateY(18%);transition-delay:0s}
+.opening.card-rising .opened-envelope{transform:translateY(33%);opacity:0;transition-duration:2.8s,3s}
+.opening.card-rising .insert-card{opacity:1;visibility:visible;transform:translateY(-3%);transition-delay:.15s}
+.opening.card-fading .insert-card{opacity:0;transform:translateY(-7%);transition-delay:0s}
+.opening-corner{z-index:1;width:175px}.opening-corner-left{left:-42px;bottom:8%}.opening-corner-right{right:-39px;top:13%;width:160px}
+.opening-cluster{position:absolute;z-index:1;pointer-events:none;width:130px;transition:opacity 1.8s}
+.cluster-left{left:-40px;bottom:25%}.cluster-right{right:-46px;top:31%;width:135px}.opening.dissolving .opening-cluster{opacity:0}
+
+/* Two floral overlays frame the envelope from above; no lower clusters. */
+.opening-corner{z-index:6}.opening-corner-left{left:-42px;top:13%;bottom:auto}.opening-corner-right{right:-39px;top:13%}
+.masthead{gap:8px;padding-left:18px;padding-right:18px}.monogram{font:16px var(--sans);white-space:nowrap}.monogram i{font-size:13px}.masthead-date{font-size:12px;letter-spacing:.3px;white-space:nowrap}
+@media(max-width:360px){.masthead{padding-left:12px;padding-right:12px;gap:5px}.monogram{font-size:14px}.masthead-date{font-size:11px}.music{font-size:11px}.opening-corner{width:145px}.opening-corner-right{width:135px}.opening-cluster{width:105px}}
+
+/* A quiet opening keeps every floral asset in the invitation itself, not the loading scene. */
+.opening{background:#fffefa}
+.opening-bottom{bottom:22svh}
+.masthead-wedding{display:flex;align-items:baseline;gap:9px;min-width:0}.masthead-wedding .monogram{font-size:15px;overflow:hidden;text-overflow:ellipsis}.countdown{font:600 11px/1 var(--sans);letter-spacing:.5px;color:#9d6b5d;white-space:nowrap}.hero,.hero-frame,.hero-photo{border-radius:16px}.hero{overflow:hidden;isolation:isolate}.hero-frame{clip-path:inset(0 round 16px)}
+@media(max-width:360px){.masthead-wedding{gap:6px}.masthead-wedding .monogram{font-size:13px}.countdown{font-size:10px}.opening-bottom{bottom:19svh}}
+
+/* The opening floats over the page backdrop without a white column beneath the envelope. */
+.opening{background:transparent}
+.skip{top:72%;bottom:auto;z-index:10;background:#fffdfaeb;border:1px solid #ead8c5;border-radius:30px;padding:0 16px}
+.seal-note{position:absolute;z-index:6;top:63%;left:50%;display:inline-flex;align-items:center;gap:5px;transform:translateX(-50%);font:500 11px/1.4 var(--sans);letter-spacing:.2px;color:#805f53;white-space:nowrap;text-shadow:0 1px 3px #fff8;transition:opacity .45s ease}.tap-hand{font-size:16px;line-height:1;animation:tap-hint 1.25s ease-in-out infinite}.opening.unfolding .seal-note{opacity:0}
+.opening{cursor:pointer}
+@keyframes tap-hint{0%,100%{transform:translateY(0);opacity:.72}50%{transform:translateY(-4px);opacity:1}}

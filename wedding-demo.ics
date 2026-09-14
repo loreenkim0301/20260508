@@ -1,0 +1,12 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Spring Wedding Invitation//KO
+BEGIN:VEVENT
+UID:jinhwan-soojung-20270508@example.invalid
+DTSTAMP:20260914T000000Z
+DTSTART:20270508T063000Z
+SUMMARY:김진환 & 김수정 결혼식
+LOCATION:문정역 루이비스컨벤션웨딩홀
+DESCRIPTION:청첩장: https://loreenkim0301.github.io/20260508/\n\n2027년 5월 8일 토요일 오후 3시 30분 결혼식에 초대합니다.
+END:VEVENT
+END:VCALENDAR
