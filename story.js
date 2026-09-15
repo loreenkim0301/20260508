@@ -11,7 +11,7 @@
  announcement.after(album);
  album.after(musicCard);
  musicCard.classList.add('standalone-music');
- const albumOrder=[2,3,4,0,1,5,6,7,8,10,9];
+ const albumOrder=[2,3,4,0,1,5,6,7,8,10,11,9];
  const galleryGrid=document.querySelector('.gallery-grid');
  const galleryButtons=[...galleryGrid.querySelectorAll('[data-photo]')];
  const galleryScroll=document.querySelector('.gallery-scroll');
