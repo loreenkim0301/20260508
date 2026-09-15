@@ -22,3 +22,6 @@ music.addEventListener('click',toggleMusic);record.addEventListener('click',togg
 // Keep the invitation available if an image is slow or cannot load.
 if(document.readyState==='complete')startOpening();else{let started=false;const begin=()=>{if(!started){started=true;startOpening()}};window.addEventListener('load',begin,{once:true});setTimeout(begin,1600)}
 window.addEventListener('pageshow',event=>{if(event.persisted)startOpening()});
+const masthead=document.querySelector('.masthead');const mastheadSpacer=document.getElementById('mastheadSpacer');
+function syncMastheadFixed(){const stuck=window.scrollY>4;masthead.classList.toggle('is-fixed',stuck);mastheadSpacer.classList.toggle('is-active',stuck);}
+syncMastheadFixed();window.addEventListener('scroll',syncMastheadFixed,{passive:true});
